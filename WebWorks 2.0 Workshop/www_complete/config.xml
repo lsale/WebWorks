@@ -1,0 +1,24 @@
+<widget id="WWWorkshop" 
+  xmlns="http://www.w3.org/ns/widgets" 
+  xmlns:cdv="http://cordova.apache.org/ns/1.0" version="0.0.1">
+  <name>WebWorks Workshop</name>
+  <description>This is the finished app for the WW 2.0 workshop</description>
+  <author email="lsale@blackberry.com" href="https://twitter.com/BlackBerryLuca">Luca Sale</author>
+  <content src="index.html"/>
+  <!-- Reserved for app graphics -->
+  <rim:splash src="img/splash-1280x720.png"/>
+  <rim:splash src="img/splash-720x720.png"/>
+
+  <access origin="*"/>
+
+  <preference name="fullscreen" value="true"/>
+  <preference name="webviewbounce" value="true"/>
+  <preference name="Orientation" value="portrait"/>
+  <preference name="AutoHideSplashScreen" value="false"/>
+ 
+ <rim:permissions>
+    <rim:permit>access_shared</rim:permit>
+  </rim:permissions>
+ 
+
+</widget>

@@ -1,0 +1,19 @@
+<div data-bb-type="screen" data-bb-effect="fade" data-bb-scroll-effect="on">
+    <!-- STEP 1: CREATE THE INTERFACE-->
+    <!-- 1A: CREATE TITLE BAR -->
+    <div id="content-title" data-bb-type="title" data-bb-caption="Photo snapper"></div>
+    <div id="content">
+    <!-- 1C: CREATE THE IMAGE LIST -->
+    	<div data-bb-type="image-list" id="listView" data-bb-image-loading="img/loading.png">
+          <div data-bb-type="item" data-bb-title="Duck" data-bb-img="img/duck.jpg">a ducklet</div>
+          <div data-bb-type="item" data-bb-title="Nigiri" data-bb-img="img/sushi.jpg">a piece of omelette sushi</div>
+          <div data-bb-type="item" data-bb-title="Cat" data-bb-img="img/cat.png">Oh, finally a cat!</div>
+          <div data-bb-type="item" data-bb-img="http://long/loading/image.png" data-bb-title="Big photo">This is going to be a long one</div>
+      </div>
+    </div>  
+    <!-- 1B: CREATE THE ACTION BAR -->
+    <div data-bb-type="action-bar" data-bb-tab-style="highlight">
+        <!-- 1C: CREATE THE ACTION ITEM -->
+        <div data-bb-type="action" data-bb-style="tab" data-bb-img="img/icons/camera.png" onclick="core.takePicture()">Camera</div>
+    </div>
+</div>
