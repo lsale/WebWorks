@@ -1,0 +1,15 @@
+<widget id="FacePlusPlus" version="0.0.1" 
+  xmlns="http://www.w3.org/ns/widgets" 
+  xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>FacePlusPlus</name>
+  <description>A sample Apache Cordova application that uses the FacePlusPlus APIs.</description>
+  <author email="lsale@blackberry.com" href="http://github.com/lsale">Luca Sale</author>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <access origin="http://api.us.faceplusplus.com/" subdomains="true"/>
+  <preference name="fullscreen" value="true"/>
+  <preference name="webviewbounce" value="true"/>
+  <rim:permissions>
+  	<rim:permit>use_camera</rim:permit>
+  </rim:permissions>
+</widget>
