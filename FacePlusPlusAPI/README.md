@@ -1,7 +1,7 @@
 # FacePlusPlus for cordova
 
 ** NOTE **
-In orderd to use this sample request an API key and modify the detect.js file in the project
+In orderd to use this sample request an API key and modify the index.js file in the project
 
 This is a WIP for a face detection project
 The following features and frameworks are used within this app:
