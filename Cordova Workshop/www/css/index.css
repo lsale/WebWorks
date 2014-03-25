@@ -20,6 +20,8 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+/* Media queries for responsive design are at the bottom */
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -58,7 +60,7 @@ body {
     margin-top: 1em;
 }
 .button{
-    display:block;
+    display: inline-block;
     position: relative;
     float: left;
     background-color:#FF6633;
@@ -68,21 +70,11 @@ body {
     margin: 0.5em;
     padding: 3em 3em;
     text-align: center;
+    overflow: hidden;
 }
 .button:hover{
     opacity: 0.6;
 }
-
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
-}
-
 h1 {
     font-size:4em;
     font-weight:normal;
@@ -224,3 +216,78 @@ h1 {
     background-color: #FF6633;
 }
 
+/* iPad Retina */
+@media (min-width: 1200px){
+    .container{
+        left: 25%;
+        margin-top: 10%;
+    }
+    .button{
+        height: 10em;
+        width: 10em;
+        padding: 5em 5em;
+    }
+    h1 {
+        margin-top: 0.5em;
+        font-size:7em;
+    }
+    .cat{
+        width: 118px;
+        height: 118px;
+    }
+}
+/* iPhone 5 or iPad Landscape mode */
+@media (min-width: 909px) and (max-width: 1199px){
+    .container{
+        left: 25%;
+        margin-top: 10%;
+    }
+  .button{
+        height: 8em;
+        width: 8em;
+        padding: 4em 4em;
+    }
+    h1 {
+        margin-top: 0.5em;
+        font-size:6em;
+    }
+    .cat{
+        width: 90px;
+        height: 90px;
+    }
+}
+/* BlackBerry 10, Nexus 7, iPhone (Landscape)*/
+@media (min-width: 641px) and (max-width: 908px){
+    .buttonContainer{
+        margin-right: 30%;
+    }
+}
+/* iPhone <= 5*/
+@media (min-width: 320px) and (max-width: 640px){
+  .button{
+        height: 5em;
+        width: 5em;
+        padding: 3em 3em;
+        margin: 0.2em;
+    }
+    .buttonContainer{
+        margin:0em 0em 0em -11em; /* offset  horizontal: twice the button width */
+        margin-right: 20%;
+    }
+    h1 {
+        margin-top: 0.5em;
+        font-size:3em;
+    }
+    .cat{
+        width: 30px;
+        height: 30px;
+    }
+    .playControl{
+        border-top: 2.5em solid transparent;
+        border-left: 6em solid white;
+        border-bottom: 2.5em solid transparent;
+    }
+    .pauseControl{
+        height: 6em;
+    }
+}
