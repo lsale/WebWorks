@@ -56,7 +56,7 @@ var app = {
             app.localFolder = "../";
         }else{
             //We assume it's either iOS, Android or Kindle FireOS
-            app.localFolder =  "file://"+path;
+            app.localFolder = "file://"+path;
         }
         app.media = new Media(app.localFolder+"resources/nyan_cat.mp3", function(){
             console.log("playAudio():Audio Success");
