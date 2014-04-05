@@ -17,8 +17,15 @@
  * under the License.
  */
 var app = {
+    battery: null,
     media: null,
-    platform: null,
+    platform: {
+        FireOS: false,
+        Android: false,
+        BlackBerry10: false,
+        FirefoxOS: false,
+        iOS: false
+    },
     localFolder: null,
     // Application Constructor
     initialize: function() {
@@ -42,17 +49,46 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.platform = app.getDevicePlatform();
-        console.log(app.platform);
         app.receivedEvent('deviceready');
-        window.addEventListener("batterystatus", app.onBatteryStatus, false);
-        
+        switch(app.getDevicePlatform()){
+            case "amazon-fireos":
+            app.platform.FireOS = true;
+            break;
+            case "android":
+            app.platform.Android = true;
+            break;  
+            case "blackberry10":
+            app.platform.BlackBerry10 = true;
+            break;
+            case "firefoxos":
+            app.platform.FirefoxOS = true;
+            break;
+            case "ios":
+            app.platform.iOS = true;
+            break; 
+        }
+        /* FirefoxOS is not supported by the battery-status API
+         * This workaround 
+         */
+        if(app.platform.FirefoxOS){
+            app.battery = navigator.battery;
+            console.log(navigator);
+            app.onBatteryStatus(app.battery);
+            app.battery.onlevelchange = function(e){
+                app.onBatteryStatus(e);
+            }
+            app.battery.onchargingchange = function(e){
+                app.onBatteryStatus(e);
+            }
+        }else{
+            window.addEventListener("batterystatus", app.onBatteryStatus, false);    
+        }
         /* The path for the local resources contained in this bundle will be different
            on each platform. We need to be able to retrieve it using this trick */
         var path = window.location.pathname;
         path = path.substr( 0, path.length - 10 );
 
-        if(app.platform.toLowerCase().indexOf('blackberry') > -1){
+        if(app.platform.BlackBerry10){
             app.localFolder = "../";
         }else{
             //We assume it's either iOS, Android or Kindle FireOS
@@ -61,7 +97,7 @@ var app = {
         app.media = new Media(app.localFolder+"resources/nyan_cat.mp3", function(){
             console.log("playAudio():Audio Success");
         }, function(){
-            console.erro("playAudio():Audio error "+error);
+            console.error("playAudio():Audio error ");
         }, app.getMediaStatus);
         
     },
@@ -74,11 +110,15 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-        deviceOS.innerHTML += app.platform;
+        deviceOS.innerHTML += app.getDevicePlatform();
 
         console.log('Received Event: ' + id);
     },
     onBatteryStatus: function(info){
+        if(app.platform.FirefoxOS){
+            info = app.battery;
+            info.isPlugged = info.charging;
+        }
         var batteryLevel = document.getElementById('batteryLevel');
         console.log("Battery "+info.level);
         batteryLevel.style.height = info.level+"%";
